@@ -17,13 +17,13 @@ request.setAttribute("list",list);
 %>
 
 <table border="1" width="90%">  
-<tr><th>Id</th><th>Name</th><th>Password</th><th>Email</th>  
-<th>Sex</th><th>Country</th><th>Edit</th><th>Delete</th></tr>  
+<tr><th>Seq</th><th>Title</th><th>Author</th><th>Comment</th>  
+<th>Edit</th><th>Delete</th></tr>  
 <c:forEach items="${list}" var="u">  
-<tr><td>${u.getId()}</td><td>${u.getName()}</td><td>${u.getPassword()}</td>  
-<td>${u.getEmail()}</td><td>${u.getSex()}</td><td>${u.getCountry()}</td>  
-<td><a href="editform.jsp?id=${u.getId()}">Edit</a></td>  
-<td><a href="deleteuser.jsp?id=${u.getId()}">Delete</a></td></tr>  
+<tr><td>${u.getSeq()}</td><td>${u.getTitle()}</td><td>${u.getAuthor()}</td>  
+<td>${u.getComment()}</td> 
+<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>  
+<td><a href="deleteuser.jsp?id=${u.getSeq()}">Delete</a></td></tr>  
 </c:forEach>  
 </table>  
 <br/><a href="adduserform.jsp">Add New User</a>

@@ -20,12 +20,10 @@ public class UserDao {
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into register(name,password,email,sex,country) values(?,?,?,?,?)");  
-	        ps.setString(1,u.getName());  
-	        ps.setString(2,u.getPassword());  
-	        ps.setString(3,u.getEmail());  
-	        ps.setString(4,u.getSex());  
-	        ps.setString(5,u.getCountry());  
+	"insert into BOOK(title,author,comment) values(?,?,?)");  
+	        ps.setString(1,u.getTitle());  
+	        ps.setString(2,u.getAuthor());  
+	        ps.setString(3,u.getComment()); 
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
@@ -36,13 +34,11 @@ public class UserDao {
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"update register set name=?,password=?,email=?,sex=?,country=? where id=?");  
-	        ps.setString(1,u.getName());  
-	        ps.setString(2,u.getPassword());  
-	        ps.setString(3,u.getEmail());  
-	        ps.setString(4,u.getSex());  
-	        ps.setString(5,u.getCountry());  
-	        ps.setInt(6,u.getId());  
+	"update BOOK set title=?,author=?,comment=? where seq=?");  
+	        ps.setString(1,u.getTitle());  
+	        ps.setString(2,u.getAuthor());  
+	        ps.setString(3,u.getComment()); 
+	        ps.setInt(4,u.getSeq());  
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
@@ -52,8 +48,8 @@ public class UserDao {
 	    int status=0;  
 	    try{  
 	        Connection con=getConnection();  
-	        PreparedStatement ps=con.prepareStatement("delete from register where id=?");  
-	        ps.setInt(1,u.getId());  
+	        PreparedStatement ps=con.prepareStatement("delete from BOOK where seq=?");  
+	        ps.setInt(1,u.getSeq());  
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	  
@@ -65,37 +61,33 @@ public class UserDao {
 	      
 	    try{  
 	        Connection con=getConnection();  
-	        PreparedStatement ps=con.prepareStatement("select * from register");  
+	        PreparedStatement ps=con.prepareStatement("select * from BOOK");  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	            User u=new User();  
-	            u.setId(rs.getInt("id"));  
-	            u.setName(rs.getString("name"));  
-	            u.setPassword(rs.getString("password"));  
-	            u.setEmail(rs.getString("email"));  
-	            u.setSex(rs.getString("sex"));  
-	            u.setCountry(rs.getString("country"));  
+	            u.setSeq(rs.getInt("seq"));  
+	            u.setTitle(rs.getString("title"));  
+	            u.setAuthor(rs.getString("author"));  
+	            u.setComment(rs.getString("comment")); 
 	            list.add(u);  
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
 	    return list;  
 	}
 	
-	public static User getRecordById(int id){  
+	public static User getRecordById(int seq){  
 	    User u=null;  
 	    try{  
 	        Connection con=getConnection();  
-	        PreparedStatement ps=con.prepareStatement("select * from register where id=?");  
-	        ps.setInt(1,id);  
+	        PreparedStatement ps=con.prepareStatement("select * from BOOK where seq=?");  
+	        ps.setInt(1,seq);  
 	        ResultSet rs=ps.executeQuery();  
 	        while(rs.next()){  
 	            u=new User();  
-	            u.setId(rs.getInt("id"));  
-	            u.setName(rs.getString("name"));  
-	            u.setPassword(rs.getString("password"));  
-	            u.setEmail(rs.getString("email"));  
-	            u.setSex(rs.getString("sex"));  
-	            u.setCountry(rs.getString("country"));  
+	            u.setSeq(rs.getInt("seq"));  
+	            u.setTitle(rs.getString("name"));  
+	            u.setAuthor(rs.getString("author"));  
+	            u.setComment(rs.getString("comment"));
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  

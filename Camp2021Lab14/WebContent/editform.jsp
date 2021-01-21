@@ -9,33 +9,21 @@
 </head>
 <body>
 <%  
-String id=request.getParameter("id");  
-User u=UserDao.getRecordById(Integer.parseInt(id));  
+String seq=request.getParameter("seq");  
+User u=UserDao.getRecordById(Integer.parseInt(seq));  
 %>
 
 <h1>Edit Form</h1>  
 <form action="edituser.jsp" method="post">  
-<input type="hidden" name="id" value="<%=u.getId() %>"/>  
+<input type="hidden" name="seq" value="<%=u.getSeq() %>"/>  
 <table>  
-<tr><td>Name:</td><td>  
-<input type="text" name="name" value="<%= u.getName()%>"/></td></tr>  
-<tr><td>Password:</td><td>  
-<input type="password" name="password" value="<%= u.getPassword()%>"/></td></tr>  
-<tr><td>Email:</td><td>  
-<input type="email" name="email" value="<%= u.getEmail()%>"/></td></tr>  
-<tr><td>Sex:</td><td>  
-<input type="radio" name="sex" value="male"/>Male   
-<input type="radio" name="sex" value="female"/>Female </td></tr>  
-<tr><td>Country:</td><td>  
-<select name="country">  
-<option>South Korea</option>  
-<option>Japan</option>  
-<option>Canada</option>  
-<option>Mexico</option>  
-<option>Other</option>  
-</select>  
-</td></tr>  
-<tr><td colspan="2"><input type="submit" value="Edit User"/></td></tr>  
+<tr><td>Title:</td><td>  
+<input type="text" name="title" value="<%= u.getTitle()%>"/></td></tr>  
+<tr><td>Author:</td><td>  
+<input type="text" name="author" value="<%= u.getAuthor()%>"/></td></tr>  
+<tr><td>Comment:</td><td>  
+<input type="text" name="comment" value="<%= u.getComment()%>"/></td></tr>      
+<tr><td colspan="2"><input type="submit" value="Edit User"/>Update</td></tr> 
 </table>  
 </form>  
 

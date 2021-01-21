@@ -1,42 +1,31 @@
 package com.javatpoint.bean;
 
 public class User {
-	private int id;  
-	private String name,password,email,sex,country;
-	public int getId() {
-		return id;
+	private int seq;  
+	private String title,author,comment;
+	public int getSeq() {
+		return seq;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getPassword() {
-		return password;
+	public String getAuthor() {
+		return author;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	public String getEmail() {
-		return email;
+	public String getComment() {
+		return comment;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
+	
 }
