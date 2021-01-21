@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.javatpoint.dao.UserDao,com.javatpoint.bean.*,java.util.*"%>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%  
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,23 +12,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <h1>Users List</h1>
+  <h1>Book List</h1>
   
-  <%  
+  <%
 List<User> list=UserDao.getAllRecords();  
 request.setAttribute("list",list);  
 %>
 
 <table border="1" width="90%">  
-<tr><th>Seq</th><th>Title</th><th>Author</th><th>Comment</th>  
-<th>Edit</th><th>Delete</th></tr>  
+<tr><th>Title</th><th>Author</th><th>Comment</th>  
+<th>Edit</th><th>Delete</th><th>More</th></tr>  
 <c:forEach items="${list}" var="u">  
-<tr><td>${u.getSeq()}</td><td>${u.getTitle()}</td><td>${u.getAuthor()}</td>  
-<td>${u.getComment()}</td> 
-<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>  
-<td><a href="deleteuser.jsp?id=${u.getSeq()}">Delete</a></td></tr>  
+<tr><td>${u.getTitle()}</td><td>${u.getWriter()}</td>  
+<td>${u.getContent()}</td> 
+<td><a href="editform.jsp?seq=${u.getSeq()}">Edit</a></td>  
+<td><a href="deleteuser.jsp?seq=${u.getSeq()}">Delete</a></td>
+<td><a href="more.jsp?seq=${u.getSeq()}">more</a></td></tr>  
 </c:forEach>  
 </table>  
-<br/><a href="adduserform.jsp">Add New User</a>
+<br/><a href="adduserform.jsp">Add a Book</a>
 </body>
 </html>

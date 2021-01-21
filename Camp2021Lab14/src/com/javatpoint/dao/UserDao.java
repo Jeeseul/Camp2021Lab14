@@ -16,17 +16,20 @@ public class UserDao {
 	}
 	
 	public static int save(User u){  
-	    int status=0;  
+	    int status=0;
+	    
+	    
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into BOOK(title,author,comment) values(?,?,?)");  
+	"insert into BOOK(title,writer,content) values(?,?,?)");  
 	        ps.setString(1,u.getTitle());  
-	        ps.setString(2,u.getAuthor());  
-	        ps.setString(3,u.getComment()); 
+	        ps.setString(2,u.getWriter());  
+	        ps.setString(3,u.getContent()); 
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
+	    
 	}  
 	
 	public static int update(User u){  
@@ -34,10 +37,10 @@ public class UserDao {
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"update BOOK set title=?,author=?,comment=? where seq=?");  
+	"update BOOK set title=?,writer=?,content=? where seq=?");  
 	        ps.setString(1,u.getTitle());  
-	        ps.setString(2,u.getAuthor());  
-	        ps.setString(3,u.getComment()); 
+	        ps.setString(2,u.getWriter());  
+	        ps.setString(3,u.getContent()); 
 	        ps.setInt(4,u.getSeq());  
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
@@ -67,8 +70,8 @@ public class UserDao {
 	            User u=new User();  
 	            u.setSeq(rs.getInt("seq"));  
 	            u.setTitle(rs.getString("title"));  
-	            u.setAuthor(rs.getString("author"));  
-	            u.setComment(rs.getString("comment")); 
+	            u.setWriter(rs.getString("writer"));  
+	            u.setContent(rs.getString("content")); 
 	            list.add(u);  
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
@@ -85,9 +88,9 @@ public class UserDao {
 	        while(rs.next()){  
 	            u=new User();  
 	            u.setSeq(rs.getInt("seq"));  
-	            u.setTitle(rs.getString("name"));  
-	            u.setAuthor(rs.getString("author"));  
-	            u.setComment(rs.getString("comment"));
+	            u.setTitle(rs.getString("title"));  
+	            u.setWriter(rs.getString("writer"));  
+	            u.setContent(rs.getString("content"));
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  

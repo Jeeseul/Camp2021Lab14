@@ -2,7 +2,7 @@ package com.javatpoint.bean;
 
 public class User {
 	private int seq;  
-	private String title,author,comment;
+	private String title,writer,content;
 	public int getSeq() {
 		return seq;
 	}
@@ -15,17 +15,17 @@ public class User {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor() {
-		return author;
+	public String getWriter() {
+		return writer;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
-	public String getComment() {
-		return comment;
+	public String getContent() {
+		return content;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }

@@ -8,6 +8,6 @@
 </head>
 <body>
 <p>Record successfully saved!</p>  
-<jsp:include page="userform.html"></jsp:include>  
+<jsp:include page="userform.jsp"></jsp:include>  
 </body>
 </html>

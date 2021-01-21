@@ -13,19 +13,17 @@ String seq=request.getParameter("seq");
 User u=UserDao.getRecordById(Integer.parseInt(seq));  
 %>
 
-<h1>Edit Form</h1>  
-<form action="edituser.jsp" method="post">  
+<h1>More Form</h1>  
+ 
 <input type="hidden" name="seq" value="<%=u.getSeq() %>"/>  
 <table>  
 <tr><td>Title:</td><td>  
-<input type="text" name="title" value="<%= u.getTitle()%>"/></td></tr>  
+<input type="text" name="title" value="<%= u.getTitle()%>" readonly/></td></tr>  
 <tr><td>Author:</td><td>  
-<input type="text" name="writer" value="<%= u.getWriter()%>"/></td></tr>  
+<input type="text" name="writer" value="<%= u.getWriter()%>" readonly/></td></tr>  
 <tr><td>Content:</td><td>  
-<input type="text" name="content" value="<%= u.getContent()%>"/></td></tr>      
-<tr><td colspan="2"><input type="submit" value="Update"/></td></tr> 
+<input type="text" name="content" value="<%= u.getContent()%>" readonly/></td></tr>      
+<button><a href="viewusers.jsp">Go to List</a></button>
 </table>  
-</form>  
-
 </body>
 </html>
