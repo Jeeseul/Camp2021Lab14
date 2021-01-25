@@ -18,18 +18,18 @@ request.setCharacterEncoding("UTF-8");
 List<User> list=UserDao.getAllRecords();  
 request.setAttribute("list",list);  
 %>
-
+<img src='./img/cat.webp' height='100px'>
 <table border="1" width="90%">  
-<tr><th>Title</th><th>Author</th><th>Comment</th>  
+<tr><th>Title</th><th>Author</th><th>Comment</th> 
 <th>Edit</th><th>Delete</th><th>More</th></tr>  
 <c:forEach items="${list}" var="u">  
 <tr><td>${u.getTitle()}</td><td>${u.getWriter()}</td>  
-<td>${u.getContent()}</td> 
+<td>${u.getContent()}</td>
 <td><a href="editform.jsp?seq=${u.getSeq()}">Edit</a></td>  
 <td><a href="deleteuser.jsp?seq=${u.getSeq()}">Delete</a></td>
 <td><a href="more.jsp?seq=${u.getSeq()}">more</a></td></tr>  
 </c:forEach>  
 </table>  
-<br/><a href="adduserform.jsp">Add a Book</a>
+<br/><a href="adduserform.jsp"'>Add a Book</a>
 </body>
 </html>

@@ -2,8 +2,11 @@ package com.javatpoint.dao;
 
 import java.sql.*;  
 import java.util.ArrayList;  
-import java.util.List;  
-import com.javatpoint.bean.User;  
+import java.util.List;
+
+import com.javatpoint.bean.User;
+
+ 
 
 public class UserDao {
 	public static Connection getConnection(){  
@@ -18,14 +21,17 @@ public class UserDao {
 	public static int save(User u){  
 	    int status=0;
 	    
-	    
+	    System.out.println("===> JDBC로 save() 기능 처리");
+	    System.out.println(u.getTitle()+"-"+u.getWriter()+"-"+u.getContent() +"-"+ u.getImage());
 	    try{  
+	    	
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"insert into BOOK(title,writer,content) values(?,?,?)");  
+	"insert into BOOK(title,writer,content,image) values(?,?,?,?)");  
 	        ps.setString(1,u.getTitle());  
 	        ps.setString(2,u.getWriter());  
-	        ps.setString(3,u.getContent()); 
+	        ps.setString(3,u.getContent());
+	        ps.setString(4,u.getImage()); 
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
@@ -37,11 +43,12 @@ public class UserDao {
 	    try{  
 	        Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement(  
-	"update BOOK set title=?,writer=?,content=? where seq=?");  
+	"update BOOK set title=?,writer=?,content=?, image=? where seq=?");  
 	        ps.setString(1,u.getTitle());  
 	        ps.setString(2,u.getWriter());  
-	        ps.setString(3,u.getContent()); 
-	        ps.setInt(4,u.getSeq());  
+	        ps.setString(3,u.getContent());
+	        ps.setString(4,u.getImage());
+	        ps.setInt(5,u.getSeq());  
 	        status=ps.executeUpdate();  
 	    }catch(Exception e){System.out.println(e);}  
 	    return status;  
@@ -71,7 +78,8 @@ public class UserDao {
 	            u.setSeq(rs.getInt("seq"));  
 	            u.setTitle(rs.getString("title"));  
 	            u.setWriter(rs.getString("writer"));  
-	            u.setContent(rs.getString("content")); 
+	            u.setContent(rs.getString("content"));
+	            u.setImage(rs.getString("image"));
 	            list.add(u);  
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
@@ -91,6 +99,7 @@ public class UserDao {
 	            u.setTitle(rs.getString("title"));  
 	            u.setWriter(rs.getString("writer"));  
 	            u.setContent(rs.getString("content"));
+	            u.setImage(rs.getString("image"));
 	        }  
 	    }catch(Exception e){System.out.println(e);}  
 	    return u;  

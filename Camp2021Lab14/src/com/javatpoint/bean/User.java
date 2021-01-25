@@ -2,7 +2,7 @@ package com.javatpoint.bean;
 
 public class User {
 	private int seq;  
-	private String title,writer,content;
+	private String title,writer,content,image ;
 	public int getSeq() {
 		return seq;
 	}
@@ -26,6 +26,12 @@ public class User {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }
